@@ -1,0 +1,28 @@
+{
+  "name": "electron-ocr",
+  "version": "1.0.0",
+  "description": "使用electron实现一个图片转文字桌面应用",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lk0606/electron-ocr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lk0606/electron-ocr/issues"
+  },
+  "homepage": "https://github.com/lk0606/electron-ocr#readme",
+  "devDependencies": {
+    "electron-builder": "^22.4.1",
+    "electron": "^8.2.0"
+  },
+  "dependencies": {
+    "node-test": "^1.2.4"
+  }
+}
