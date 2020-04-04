@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const { app, BrowserWindow } = require('electron')
 const path = require('path')
 
 
@@ -40,5 +40,14 @@ app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
 })
 
+// Enable live reload for Electron too
+require('./build/main')(__dirname, {
+    // Note that the path to electron may vary according to the main file
+    // electron: require(`${__dirname}/node_modules/electron`), // 第一个参数需先设__dirname 全部更新，相当于手动执行 electron .
+    // ignored: ['preload.js'], // not work with __dirname
+    // useFsEvents: false,
+    // persistent: true,
+    // forceHardReset: false,
+})
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
