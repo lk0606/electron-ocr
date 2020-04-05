@@ -1,23 +1,32 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
-
+const url = require('url')
 
 function createWindow () {
     // Create the browser window.
     const mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
-        }
+        // webPreferences: {
+            // nodeIntegration: true,
+            // preload: path.join(__dirname, './preload.js')
+        // }
     })
     // 打开开发者工具
     mainWindow.webContents.openDevTools()
 
     // and load the index.html of the app.
-    mainWindow.loadFile('index.html').then(res=> {
-        console.log(res, 'loadFile res')
+    mainWindow.loadURL(
+        'http://localhost:3000' ||
+        url.format({
+            protocol: 'file',
+            slashes: true,
+            pathname: require('path').join(__dirname, '../build/index.html')
+        })
+    )
+    .then(res=> {
+        // console.log(res, 'loadFile res')
     }).catch(err=> {
         console.log(err, 'loadFile catch')
     })
@@ -45,9 +54,9 @@ app.on('activate', function () {
 })
 
 // Enable live reload for Electron too
-require('./build/main')(__dirname, {
+require('electron-reload')(['../src', './index.js'], {
     // Note that the path to electron may vary according to the main file
-    // electron: require(`${__dirname}/node_modules/electron`), // 第一个参数需先设__dirname 全部更新，相当于手动执行 electron .
+    electron: require(`../node_modules/electron`), // 第一个参数需先设__dirname 全部更新，相当于手动执行 electron .
     // ignored: ['preload.js'], // not work with __dirname
     // useFsEvents: false,
     // persistent: true,

@@ -1,30 +1,41 @@
 {
-  "name": "electron-ocr",
-  "version": "1.0.0",
-  "description": "使用electron实现一个图片转文字桌面应用",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron .",
-    "dist": "electron-builder"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lk0606/electron-ocr.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lk0606/electron-ocr/issues"
-  },
-  "homepage": "https://github.com/lk0606/electron-ocr#readme",
-  "devDependencies": {
-    "chokidar": "^3.3.1",
-    "electron": "^8.2.0",
-    "electron-builder": "^22.4.1"
-  },
+  "name": "pt",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "node-test": "^1.2.4"
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1"
+  },
+  "scripts": {
+    "start:r": "react-scripts start",
+    "start:e": "electron ./electron",
+    "build:r": "react-scripts build",
+    "build:e": "electron-builder",
+    "test:r": "react-scripts test",
+    "eject:r": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^8.2.0",
+    "electron-builder": "^22.4.1",
+    "electron-reload": "^1.5.0"
   }
 }
