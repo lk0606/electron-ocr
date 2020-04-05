@@ -2,21 +2,13 @@
   "name": "pt",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
-  },
   "scripts": {
-    "start:r": "react-scripts start",
+    "start:r": "react-app-rewired start",
     "start:e": "electron ./electron",
-    "build:r": "react-scripts build",
+    "build:r": "react-app-rewired build",
     "build:e": "electron-builder",
-    "test:r": "react-scripts test",
-    "eject:r": "react-scripts eject"
+    "test:r": "react-app-rewired test",
+    "eject:r": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,9 +25,21 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "antd": "^4.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "devDependencies": {
+    "customize-cra": "^0.9.1",
+    "react-app-rewired": "^2.1.5",
+    "react-scripts": "3.4.1",
     "electron": "^8.2.0",
     "electron-builder": "^22.4.1",
-    "electron-reload": "^1.5.0"
+    "electron-reload": "^1.5.0",
+    "babel-plugin-import": "^1.13.0"
   }
 }
