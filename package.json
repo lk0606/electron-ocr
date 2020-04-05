@@ -1,14 +1,41 @@
 {
-  "name": "pt",
+  "name": "ptt",
   "version": "0.1.0",
   "private": true,
+  "author": "liukun",
+  "description": "使用`electron`+`react`实现一个图片转文字桌面应用",
   "scripts": {
     "start:r": "react-app-rewired start",
-    "start:e": "electron ./electron",
     "build:r": "react-app-rewired build",
-    "build:e": "electron-builder",
     "test:r": "react-app-rewired test",
-    "eject:r": "react-app-rewired eject"
+    "eject:r": "react-app-rewired eject",
+    "start:e": "NODE_ENV=development electron ./public/electron/index.js",
+    "build:mac": "NODE_ENV=production electron-builder --mac",
+    "build:win": "NODE_ENV=production electron-builder --win"
+  },
+  "main": "build/electron/index.js",
+  "build": {
+    "appId": "com.Pictrue To Text.app",
+    "extends": null,
+    "files": [
+      "build",
+      "package.json"
+    ],
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis"
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "eslintConfig": {
     "extends": "react-app"

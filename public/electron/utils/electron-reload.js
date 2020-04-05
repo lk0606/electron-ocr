@@ -2,7 +2,7 @@
 // chokidar has issue ignored is not work details: https://github.com/paulmillr/chokidar/issues/773
 // copy npm electron-reload, I want to fix, but too much trouble that need implement chokidar, so I give up
 
-const { app } = require('electron')
+const { app } = require('..')
 const chokidar = require('chokidar')
 const fs = require('fs')
 const { spawn } = require('child_process')
