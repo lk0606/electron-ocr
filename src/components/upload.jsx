@@ -11,22 +11,27 @@ const props = {
     name: 'file',
     showUploadList: false,
     accept: '.png, .jpg, .jpeg',
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    action: '',
+    // action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
     headers: {
         authorization: 'authorization-text',
     },
-    onChange(info) {
-        console.log(info, 'info onchange')
-        // if (info.file.status !== 'uploading') {
-        //     console.log(info.file, info.fileList);
-        // }
-        if (info.file.status === 'done') {
-            imgBlob = info.file.originFileObj
-            message.success(`${info.file.name} file uploaded successfully`);
-        } else if (info.file.status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
-        }
+    beforeUpload(file) {
+        imgBlob = file
+        message.success(`本地上传上传，请点击开始识别`)
     },
+    // onChange(info) {
+    //     console.log(info, 'info onchange')
+    //     // if (info.file.status !== 'uploading') {
+    //     //     console.log(info.file, info.fileList);
+    //     // }
+    //     if (info.file.status === 'done') {
+    //         imgBlob = info.file.originFileObj
+    //         message.success(`${info.file.name} file uploaded successfully`);
+    //     } else if (info.file.status === 'error') {
+    //         message.error(`${info.file.name} file upload failed.`);
+    //     }
+    // },
 };
 
 export default function SelfUpload() {
@@ -39,8 +44,11 @@ export default function SelfUpload() {
 
         Tesseract.recognize(
             img,
-            'eng',
+            // 'eng',
+            // 'eng+chi_sim+chi_tra',
+            'eng+chi_sim',
             {
+                // tessedit_char_blacklist: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
                 // logger: m => {
                 //     console.log(m)
                 // }
