@@ -12,7 +12,7 @@ function createWindow () {
         width: 800,
         height: 600,
         webPreferences: {
-            nodeIntegration: true, // 是否集成 node
+            // nodeIntegration: true, // 是否集成 node
             // preload: path.join(__dirname, './preload.js')
         }
     })
@@ -30,9 +30,17 @@ function createWindow () {
         console.log(err, 'loadFile catch')
     })
 
-    // Open the DevTools.
     if(env ==='development') {
         mainWindow.webContents.openDevTools()
+        // Enable live reload for Electron too
+        require('electron-reload')(['../../src', './index.js'], {
+            // Note that the path to electron may vary according to the main file
+            electron: require(`electron`), // 第一个参数需先设__dirname 全部更新，相当于手动执行 electron .
+            // ignored: ['preload.js'], // not work with __dirname
+            // useFsEvents: false,
+            // persistent: true,
+            // forceHardReset: false,
+        })
     }
 }
 
@@ -52,16 +60,6 @@ app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
-})
-
-// Enable live reload for Electron too
-require('electron-reload')(['../../src', './index.js'], {
-    // Note that the path to electron may vary according to the main file
-    electron: require(`electron`), // 第一个参数需先设__dirname 全部更新，相当于手动执行 electron .
-    // ignored: ['preload.js'], // not work with __dirname
-    // useFsEvents: false,
-    // persistent: true,
-    // forceHardReset: false,
 })
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

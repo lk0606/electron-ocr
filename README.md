@@ -2,6 +2,9 @@
 # ocr-electron-react
 使用`electron`+`react`实现一个图片转文字桌面应用
 
+## module
+[tesseract.js](https://github.com/naptha/tesseract.js)  
+[images.js](https://github.com/zhangyuanwei/node-images)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
